@@ -1,0 +1,214 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}		  	% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=1cm,includefoot
+] {geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{circuitikz}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumitem}
+\begin{document} % конец преамбулы, начало документа
+
+\begin{figure}[h!]
+	\hfill
+	\includegraphics[height=.09\textheight]{sirius}
+\end{figure}
+\vspace{5ex}
+\begin{center}
+	\Large\textbf{Производная.\\
+		Формулы и правила вычисления производных} 
+\end{center}
+
+\paragraph*{Определение.}\textit{Производной} функции
+$ f $ в точке $ x_0 $ называется 
+\[
+	\lim\limits_
+	{x\rightarrow x_0}\dfrac{f(x)-f(x_0)}{x-x_0}=
+	\lim\limits_{\Delta x\rightarrow0}
+	\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}\in\mathbb{\overline{R}}
+\]
+и обозначается $ f'(x_0) $.
+\paragraph{Теорема 1.}Если функции $ f $ и $ g $ 
+дифференцируемы в точке $ x_0 $, то
+\begin{enumerate}
+	\item $ (f+g)'(x_0)=f'(x_0)+g'(x_0); $
+	\item $ (f\cdot g)'(x_0)=f'(x_0)g(x_0)+g'(x_0)f(x_0). $
+	\item Если дополнительно $ g(x_0)\ne0, $ то
+	\[
+		\left(\dfrac{f}{g}\right)'(x_0)=
+		\dfrac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g^2(x_0)}
+	\]
+\end{enumerate}
+\paragraph{Теорема 2.}(Производная сложной функции).
+Если функция $ y=f(x) $ имеет производную в точке $ x_0 $,
+а функция $ z=g(y) $~--- в точке $ y_0=f(x_0) $, то сложная
+функция $ z=\varphi(x)=g(f(x)) $ также имеет производную в
+точке $ x_0 $, причем
+\begin{equation}\label{comlderv}
+	\varphi'(x_0)=g'(y_0)f'(x_0).
+\end{equation}
+Опуская аргумент и используя другое обозначение для 
+производных, формулу \eqref{comlderv} можно переписать
+в виде
+\begin{equation}\label{varcomlderv}
+	\dfrac{dz}{dx}=\dfrac{dz}{dy}\dfrac{dy}{dx}.
+\end{equation}
+\textbf{Пример.} Вычислить производную функции
+$ z=\sqrt{1+x^2} $.\\
+$ \blacktriangle $ Данная функция является композицией 
+функций $ y=1+x^2 $ и $ z=\sqrt{y} $, причем 
+\[
+	\dfrac{dy}{dx}=2x~~~и~~~\dfrac{dz}{dy}=
+	\dfrac{1}{2\sqrt{y}}.
+\]
+По формуле \eqref{varcomlderv} получаем 
+\[
+	\dfrac{dz}{dx}=\dfrac{1}{2\sqrt{y}}2x=
+	\dfrac{x}{\sqrt{1+x^2}}.~\blacktriangle
+\]
+\paragraph{Теорема 3.} (Производная обратной функции).
+Пусть $ \exists y'(x_0)\in\mathbb{R},~ y'(x_0)\ne0 $.
+Тогда обратная функция $ x(y) $ дифференцируема в точке
+$ y_0=u(x_0) $, причем
+\begin{equation}\label{invfuncder}
+	x'(y_0)=\dfrac{1}{y'(x_0)}.
+\end{equation}
+\textbf{Пример.} Найти производную функции $ y=\arcsin x $.\\
+$ \blacktriangle $ Пользуясь формулой \eqref{invfuncder} и
+определением арксинуса получаем
+\[
+	(\arcsin x)'=\dfrac{1}{(\sin y)'}=\dfrac{1}{\cos y}=
+	\dfrac{1}{\sqrt{1-\sin^2y}}=\dfrac{1}{\sqrt{1-x^2}}. ~
+	\blacktriangle
+\]
+\paragraph{Теорема 4.} (Производные элементарных функций).
+\begin{multicols}{2}
+	\begin{enumerate}\bfseries
+		\item $ C'=0~~~(C=const); $
+		\item $ (a^x)'=a^x\ln a, a>0,~ x\in\mathbb{R}; $
+		\item $ (\log_a x)'=
+		\dfrac{1}{x\ln a},~ a>0,~ a\ne1,~ x>0; $
+		\item $ (x^\alpha)'=
+		ax^{\alpha-1},~ \alpha\in\mathbb{R},~ x>0; $
+		\item $ (\sin x)'=\cos x, ~~~ (\cos x)'=-\sin x; $
+		\item $ (\tg x)'=
+		\frac{1}{\cos^2x}, ~~~ (\ctg x)'=-\frac{1}{\sin^2x}; $
+		\item $ (\arcsin x)'=\frac{1}{\sqrt{1-x^2}}, ~~
+		(\arccos x)'=\frac{-1}{\sqrt{1-x^2}}; $
+		\item $ (\arctg x)'=\frac{1}{1+x^2}, ~~~ 
+		(\arcctg x)'=-\frac{1}{1+x^2} $
+	\end{enumerate}
+\end{multicols}
+\section*{Задачи для работы в классе}
+
+Вычислить производную функции $ y=f(x) $. Указать область
+существования производной.
+\begin{multicols}{3}
+	\begin{enumerate}\bfseries
+		\item $ y=ax^3+bx^2+cx+d. $
+		\item $ y=\dfrac{\ln3}{x}+e^2.	 $
+		\item 
+		$ y=\dfrac{a}{x^2}+\dfrac{b}{x^3}+\dfrac{c}{x^4}. $
+		\item $ y=(x+1)\tg x. $
+		\item $ y=\dfrac{ax+b}{cx+d}. $
+		\item $ y=x\arcsin x $
+		\item $ y=(\sqrt{2})^x+(\sqrt{5})^{-x}. $
+		\item $ y=(x^2-7x+8)e^x. $
+		\item $ y=\log_x2^x  $
+	\end{enumerate}
+\end{multicols}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\setcounter{enumi}{6}
+	\item Снаряд вылетел с начальной скоростью $ v_0 $ под
+	углом $ \alpha $ к горизонту. В какой момент скорость
+	изменения высоты снаряда равна нулю.
+	\item Количество электричества $ q $ (в кулонах),
+	протекающее через поперечное сечение проводника,
+	изменяется по закону $ q=3t^2+2t $. Найти силу тока
+	в конце пятой секунды.
+	\item Колесо вращается так, что угол поворота
+	 пропорционален квадрату времени. Первый оборот бы сделан
+	 за 8~с. Найти угловую скорость через 64~c после начала
+	 движения.
+	 \item Масса $ m(t) $ радиоактивного вещества изменяется
+	 по закону $ m=m_02^{(t_0-t)/T} $, где $ t $~--- время,
+	 $ m_0 $~--- масса в момент времени $ t_0 $, $ T $~---
+	 период полураспада. Доказать, что скорость распада
+	 радиоактивного вещества пропорциональна количеству
+	 вещества. Найти коэффициент пропорциональности.
+	 \item Определить при каком соотношении сопротивлений,
+	 последовательно соединенных с источником питания, на них выделяется максимальная мощность.
+	 \item Свойства идеального газа описывается уравнением Менделеева-Клапейрона $ pV=\nu RT $. Определить 
+	 максимальную температуру в процессе 
+	 $ (V_0, 3p_0)\rightarrow(3V_0, p_0) $.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
