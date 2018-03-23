@@ -1,0 +1,212 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}		  	% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,footskip=1cm,includefoot
+] {geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+\usepackage{bigints}
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{circuitikz}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumitem}
+%\DeclareMathOperator{\arctg}{arctg}
+\begin{document} % конец преамбулы, начало документа
+
+\begin{figure}[h!]
+	\hfill
+	\includegraphics[height=.09\textheight]{sirius}
+\end{figure}
+\vspace{5ex}
+\begin{center}
+	\Large\textbf{Неопределенный интеграл.\\
+		Общие приемы и методы интегрирования} 
+\end{center}
+
+\paragraph*{Определение.}Пусть 
+$ -\infty\leqslant a<b\leqslant+\infty $ и на $ (a, b) $
+заданы функции $ f(x) $ и $ F(x) $. Функция $ F(x) $
+называется \textit{первообразной} функции $ f(x) $ на 
+$ (a, b) $, если
+\[
+	\forall x\in(a, b)\hookrightarrow F'(x)=f(x).
+\] 
+\paragraph{Теорема 1.}(О структуре множества первообразных.)
+Пусть функция $ F(x) $ является первообразной функции 
+$ f(x) $ на $ (a, b) $. Тогда функция $ F(x)_1 $ является
+первообразной функции $ f(x) $ на $ (a, b) $ в том и только
+в том случае, если 
+$ \exists C\in\mathbb{R}: \forall x\in(a, b)
+\hookrightarrow F_1(x)=F(x)+C.$
+\paragraph{Определение.}\textit{Неопределенным интегралом}
+$ \displaystyle\int f(x)dx $ называется множество всех первообразных 
+функции $ f(x) $.
+\paragraph{Теорема 2.}Пусть функция $ F(x) $ является 
+первообразной функции $ f(x) $. Тогда неопределенный 
+интеграл функции $ f(x) $~--- это множество функций вида
+$ F(x)+C $, где $ C\in\mathbb{R} $~--- произвольная константа:
+$ \int f(x)dx={F(x)+C:C\in\mathbb{R}} $, что для краткости
+записывают в виде
+\begin{equation}
+	\int f(x)dx=F(x)+C.
+\end{equation}
+\paragraph{Замечание.} Операция взятия дифференциала $ d $
+и операция взятия неопределенного интеграла 
+$ \displaystyle\int $ являются взаимно обратными.
+\paragraph{Теорема 3.} (Свойства линейности неопределенного
+интеграла).Если функции $ f_1(x) $ и $ f_2(x) $ имеют
+первообразные на $ (a, b) $, $ \alpha_1\in\mathbb{R} $, 
+$ \alpha_2\in\mathbb{R} $, $ \alpha_1^2+\alpha_2^2\ne0 $, 
+то на $ (a, b) $
+\begin{equation}
+	\int(\alpha_1f_1(x)+\alpha_2f_2(x))dx=
+	\alpha_1\int f_1(x)dx+\alpha_2\int f_2(x)dx.
+\end{equation}
+\paragraph{Теорема 4.}(Метод интегрирования по частям.)
+Пусть на $ (a, b) $ заданы дифференцируемые функции 
+$ u(x) $ и $ v(x) $. Тогда на $ (a, b) $
+\begin{equation}
+	\int u(x)dv(x)=u(x)v(x)-\int v(x)du(x).
+\end{equation}
+\paragraph{Теорема 5.} Если функция $ f $ непрерывна на отрезке
+$ [a, b] $, то для любой ее первообразной $ F $ имеет место формула
+\begin{equation}
+	\int_{a}^{b}f(x)dx=F(b)-F(a).
+\end{equation}
+\paragraph{Теорема 6.}(Формулы для основных неопределенных
+интегралов.)
+\begin{enumerate}
+\begin{multicols}{2}
+		\item $ \displaystyle\int x^{\alpha}dx=
+		\dfrac{x^{\alpha+1}}{\alpha+1}+C, ~~~ \alpha\ne1, x>0;$
+		\item $ \displaystyle\int\dfrac{dx}{x+a}=
+		\ln\abs{x+a}+C, ~~~ x\ne -a; $
+		\item $ \displaystyle\int a^xdx=
+		\dfrac{a^x}{\ln a}+C, ~~~ a>0, a\ne1; $
+		\item $ \displaystyle\int\sin xdx=-\cos x+C; $
+		\item $ \displaystyle\int\cos xdx=\sin x+C; $
+		\item $ \displaystyle\int\dfrac{dx}{\cos^2x}=
+		\tg x+C, x\ne\frac{\pi}{2}+\pi k; $
+		\item $ \displaystyle\int\dfrac{dx}{x^2+a^2}=
+		\frac{1}{a}\arctg\frac{x}{a}+C, ~~~ a>0; $
+		\item $  \displaystyle\int\dfrac{dx}{\sqrt{a^2-x^2}}=
+		\arcsin \frac{x}{a}+C, ~~~ \abs{x}<a;$
+		\item $  \displaystyle\int\dfrac{dx}{x^2-a^2}=
+		\frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}}+C,~~~x\ne\pm a;$
+		\item $  \displaystyle\int\dfrac{dx}{x^2+a}=
+		\ln\abs{x+\sqrt{x^2+a}}+C,~~x^2>-a. $
+\end{multicols}
+\end{enumerate}
+
+\section*{Задачи для работы в классе}
+
+Вычислить производную функции $ y=f(x) $. Указать область
+существования производной.
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Найти какую-либо первообразную $ F(x) $ функции
+	$ f(x)=1/\sqrt{x} $, $ x\in(0,+\infty) $, и ее
+	неопределенный интеграл.
+	\item Для функции $ f(x)=1/x, x\in(-\infty, 0) $, найти
+	первообразную $ F(x) $, график которой проходит через
+	точку $ (-2, 2) $.
+	
+	\item Найти интеграл:
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $ \displaystyle\int(x-2e^x)dx $.
+			\item $ \displaystyle\int
+			\dfrac{(\sqrt{x}-2\sqrt[3]{x})^2}{x}dx. $
+			\item $ \displaystyle\int\dfrac{dx}{x^4+4x^2}. $
+			\item $ \displaystyle\int
+			\dfrac{\sqrt{x^2-3}-3\sqrt{x^2+3}}{\sqrt{x^4-9}}dx. $
+			\item $ \displaystyle\int\cos^2\frac{x}{2}dx. $
+			\item $ \displaystyle\int\tg^2xdx. $
+			\item $ \displaystyle\int3^x\cdot5^{2x}dx. $
+			\item $ \displaystyle\int(3x-5)^{10}dx. $
+			\item $ \displaystyle\int x^2\sqrt[5]{5x^3+1}dx. $
+			\item $ \displaystyle\int\tg xdx. $
+			\item $ \displaystyle\int\dfrac{dx}{2+\cos^2x},
+			~~\abs{x}<\frac{\pi}{2}. $
+			\item $ \displaystyle\int 
+			\dfrac{x^7dx}{\sqrt{1-x^{16}}}. $
+			\item $ \displaystyle\int\ln xdx. $
+			\item $ \displaystyle\int x\sin xdx. $
+			\item $ \displaystyle\int x^2e^xdx. $
+		\end{enumerate}
+	\end{multicols}
+	\item Частица массой $ m $, движущиеся горизонтально, с начальной
+	скоростью $ v_0 $ попадает на поверхность, где на нее действует
+	сила вязкого трения $ F=\alpha v $.
+	Найти зависимость пройденного частицей пути от времени.
+	\item Тело начинает падать с высоты $ H $
+	под действием силы тяжести. В процессе падения оно
+	испытывает сопротивление, пропорциональное скорости.
+	Определить время падения.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
