@@ -1,0 +1,272 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}		  	% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=1cm,right=0cm,top=2cm,bottom=2cm,footskip=1cm,includefoot
+] {geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{lscape}
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+\usepackage{bigints}
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{circuitikz}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tkz-euclide}
+\usepackage{multicol}
+\usepackage{enumitem}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\vspace{10pt}}m{#1}}
+\usepackage[thinlines]{easytable}
+%\DeclareMathOperator{\arctg}{arctg}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+\begin{document} % конец преамбулы, начало документа
+	\pagestyle{empty}
+%\begin{landscape}
+	
+	\renewcommand{\arraystretch}{2}
+
+	\begin{longtable}{c|l|C{17cm}}
+		\toprule
+		$ № $ &
+		~~~~~~~~
+		\begin{tabular}{c}
+			ФИО \\
+			Номер мобильного 
+		\end{tabular} &Регалии  \\
+		\midrule
+		\rownumber 
+		& \begin{tabular}{l}
+			Замятнин Михаил Юрьевич \\
+			тел: +7 (915)-122-04-08
+		\end{tabular} & \\
+		\midrule
+		\rownumber		
+		& \begin{tabular}{l}
+			Ткачук Игорь Викторович \\
+			тел: +7 (910) 488-24-88
+		\end{tabular} & \\
+		\midrule
+		\rownumber		
+		& \begin{tabular}{l}
+			Курносов Валерий Михайлович\\
+			тел: +7 (968) 911-41-00
+		\end{tabular} & \\
+		\midrule
+		\rownumber		
+		& \begin{tabular}{l}
+			Бычков Алексей Игоревич \\
+			тел: +7 (925) 881-88-61
+		\end{tabular} & \\
+		\midrule
+		\rownumber & 
+		\begin{tabular}{l}
+			Слободянин Валерий Павлович \\
+			тел: +7 (906) 085-52-83
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		 & \begin{tabular}{l}
+			Заяц Алексей Евгеньевич  \\
+			тел: +7 (905) 021-38-95
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		 & \begin{tabular}{l}
+			Ларионов Вадим Сергеевич  \\
+			тел: +7 (910) 145-94-22
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Корнеева Галина Дмитриевна  \\
+			тел: +7 (905) 672-95-71
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Клепиков Максим Сергеевич  \\
+			тел: +7 (965) 473-12-68
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Клепикова Юлиана Валерьевна  \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Кармазин Сергей Владимирович \\
+			тел: +7 (903) 664-48-20
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Порошин Олег Владимирович  \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Порошина Елена Владимировна  \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Гафни Даниил  \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Татаркин Дмитрий Евгеньевич \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Кузнецов Глеб Михайлович  \\
+			тел: +7 (916) 141-33-83
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Голод Владимир Игоревич  \\
+			тел: +7 (917) 583-84-01
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Жабин Александр Александрович \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\newpage
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Просвирин Кирилл Владимирович  \\
+			тел: +7 (977) 756-33-16
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Зикрацкий Гордей Сергеевич  \\
+			тел: +7 (987) 693-21-31
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Елисеев Максим Алексеевич \\
+			тел: +7 (917) 699-38-09
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Зыков Илья Олегович \\
+			тел: +7 (917) 577-94-32
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Шиянов Кирилл Игоревич \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Тепайкин Роман Сергеевич \\
+			тел: 
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Сеитов Андрей Владимирович  \\
+			тел: +7 (960) 324-39-01
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+ 		& \begin{tabular}{l}
+			Безбородов Сергей Владимирович  \\
+			тел: +7 (937) 673-16-77
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Киреев Александр Анатольевич \\
+			тел: +7 (987) 997-22-20
+		\end{tabular} & \\
+		\midrule
+		\rownumber
+		& \begin{tabular}{l}
+			Колдунов Леонид Модестович \\
+			тел: +7 (926) 453-20-51
+		\end{tabular} & \\
+		\bottomrule
+	\end{longtable}
+
+%\end{landscape}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
