@@ -1,0 +1,141 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+\usepackage[14pt]{extsizes}
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}		  	% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=1cm,right=1cm,top=0cm,bottom=2cm,footskip=1cm,includefoot
+] {geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{lscape}
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+
+
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\vspace{10pt}}m{#1}}
+
+\usepackage{array,etoolbox}
+
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+
+%\DeclareMathOperator{\arctg}{arctg}
+\begin{document}\pagestyle{empty}
+	\begin{longtable}{r|l|c|c}
+		\toprule
+		$ № $ &~~~~~~~~~~~~~~~~~~~ФИО
+		&Комната & Номер телефона\\ 
+		\midrule
+		\rownumber & Замятнин Михаил Юрьевич & 8074 & 
+		+7 (915) 122-04-08 \\
+		\midrule
+		\rownumber & Ткачук Игорь Викторович & 8071 &
+		+7 (910) 488-24-88\\
+		\midrule
+		\rownumber & Лымарь Александра Павловна & --- & 
+		+7 (967) 316-29-22\\
+		\midrule
+		\rownumber & Курносов Валерий Михайлович & 8071 &
+		+7 (968) 911-41-00\\
+		\midrule
+		\rownumber & Бычков Алексей Игоревич & 8071 &
+		+7 (925) 881-88-61\\
+		\midrule
+		\rownumber & Слободянин Валерий Павлович & 7071 &
+		+7 (906) 085-52-83\\
+		\midrule
+		\rownumber & Заяц Алексей Евгеньевич & 8076 &
+		+7 (905) 021-38-95\\
+		\midrule
+		\rownumber & Ларионов Вадим Сергеевич & 8077 &
+		+7 (910) 145-94-22\\
+		\midrule
+		\rownumber & Корнеева Галина Дмитриевна & 8112 &
+		+7 (905) 672-95-71\\
+		\midrule
+		\rownumber & Клепиков Максим Сергеевич & 7008 &
+		+7 (965) 473-12-68\\
+		\midrule
+		\rownumber & Клепикова Юлиана Валерьевна & 7008 &\\
+		\midrule
+		\rownumber & Кармазин Сергей Владимирович & --- &
+		+7 (903) 664-48-20\\
+		\midrule
+		\rownumber & Порошин Олег Владимирович & 8075 &\\
+		\midrule
+		\rownumber & Порошина Елена Владимировна & 8075 &\\
+		\midrule
+		\rownumber & Гафни Даниил & 8078 &\\
+		\midrule
+		\rownumber & Татаркин Дмитрий Евгеньевич & 8116 &\\
+		\midrule
+		\rownumber & Кузнецов Глеб Михайлович & 8078 &
+		+7 (916) 141-33-83\\
+		\midrule
+		\rownumber & Голод Владимир Игоревич & 8073 &
+		+7 (917) 583-84-01\\
+		\midrule
+		\rownumber & Жабин Александр Александрович & 8073 &
+		\\
+		\midrule
+		\rownumber & Просвирин Кирилл Владимирович & 8079 &
+		+7 (977) 756-33-16\\
+		\midrule
+		\rownumber & Зикрацкий Гордей Сергеевич & 7073 &
+		+7 (987) 693-21-31\\
+		\midrule
+		\rownumber & Елисеев Максим Алексеевич & 7073 &
+		+7 (917) 699-38-09\\
+		\midrule
+		\rownumber & Зыков Илья Олегович & 8115 &
+		+7 (917) 577-94-32\\
+		\midrule
+		\rownumber & Шиянов Кирилл Игоревич & 8115 &\\
+		\midrule
+		\rownumber & Тепайкин Роман Сергеевич & 8114 & 	\\
+		\midrule
+		\rownumber & Сеитов Андрей Владимирович & 8114 &
+		+7 (960) 324-39-01\\
+		\midrule
+		\rownumber & Безбородов Сергей Владимирович & 8077 &
+		+7 (937) 673-16-77\\
+		\midrule
+		\rownumber & Киреев Александр Анатольевич & 8077 &
+		+7 (987) 997-22-20\\
+		\midrule
+		\rownumber & Колдунов Леонид Модестович & 8115 &
+		+7 (926) 453-20-51\\
+		\bottomrule
+	\end{longtable}
+\end{document}
+
+
+
+
